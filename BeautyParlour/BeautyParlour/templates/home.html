@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.product{
+            display: inline-block;
+            height: 500px;
+            margin-left: 50px;
+            padding-left: 40px;
+        }
+        .main{
+            margin-left: 500px;
+            margin-top: 200px;
+        }
+
+
+    </style>
+</head>
+<body>
+    {% include 'header.html'%}
+    <div class="main">
+        {%for p in tops%}
+        <div class="product">
+            <h1>{{p.name}}</h1>
+            <img src="{{p.image.url}}" alt="p" style="width: 100px; height: 200px;">
+            <h3>Pirce: {{p.price}} only</h3>
+        </div>
+        {%endfor%}
+    </div>
+</body>
+</html>

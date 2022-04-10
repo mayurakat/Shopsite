@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+
+
+
+</head>
+<body>
+    <form  action="{% url 'register' %}" method="POST">
+        {% csrf_token %}
+        <input  required type="text" name="first_name" placeholder="first Name"><br>
+        <input  required type="text" name="last_name" placeholder="last Name"><br>
+        <input required  type="text" name="username" placeholder="username"><br>
+        <input required  type="email" name="email" placeholder="E-mail"><br>
+        <input required  type="password" name="password1" placeholder="password"><br>
+        <input  required type="password" name="password2" placeholder="confirm pass"><br>
+        <input  type="submit">
+    </form><br>
+
+    <li><a href="{% url 'home' %}">home</a></li><br>
+    <li><a href="{% url 'login' %}">login</a></li>
+
+
+    <div>
+        {% for message in messages%}
+        <h1>{{message}}</h1>
+        {% endfor %}
+    </div>
+    
+</body>
+</html>

@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <style>
+        header img {
+    height: 80px;
+    margin-left: 40px;
+}
+
+header {
+    background-color: white;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 80px;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 0 25px 0 black;
+}
+
+header * {
+    display: inline;
+}
+
+header li {
+    margin: 20px;
+}
+
+header li a {
+    color: black;
+    text-decoration: none;
+}
+h1{
+    color: black;
+}
+    </style>
+
+
+
+
+</head>
+<body>
+   
+    <header>
+        <img src="https://www.pngitem.com/pimgs/m/178-1783030_online-shopping-logo-png-transparent-png.png">
+         <nav>
+             <ul>
+                 <li><a href="{% url 'home'%}">Home</a></li>
+                 <li><a href="{% url 'shop'%}">Shop</a></li>
+                 {% if user.is_authenticated %}
+                 <li><a href="{% url 'logout'%}">logout</a></li>
+                 <p>Hii, {{user.username}}</p>
+                 {% else %}
+                 <li><a href="{% url 'register'%}">Signup/Login</a></li>
+                 {% endif %}
+             </ul>
+         </nav>
+     </header>
+     <h1>mayur</h1>
+</body>
+</html>

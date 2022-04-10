@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        div.product{
+            display: inline-block;
+            height: 700px;
+            width: 900px;
+            margin-left: 50px;
+            padding-left: 40px;
+        }
+        .main{
+            margin-left: 200px;
+            margin-top: 200px;
+        }
+        table, th, td {
+            border:1px solid black;
+            text-align: center;
+        }
+
+
+    </style>
+</head>
+<body>
+    {% include 'header.html'%}
+    <div class="main">
+        
+        <div class="product">
+            <table style="width:100%">
+                <tr>
+                    <th>Name</th>
+                    <th>cost</th>
+                    <th>quantity</th>
+                    <th>Total</th>
+                </tr>
+                {% for p in cart_p%}
+                    <tr>
+                        <td>{{p.products.name}}</td>
+                        <td>{{p.products.price}}</td>
+                        <td>{{p.quantity}}</td>
+                        <td>{{p.total_price}}</td>
+                    </tr>
+                    {%endfor%}
+                    <tr>
+                        <td></td>
+                        <td></td>
+                        <td>Total</td>
+                        <td>{{cart_total}}</td>
+                    </tr>
+            </table>
+            
+            <button id="checkout" style="margin-left: 500px;margin-top:30px ;">checkout</button>
+            <br><br>
+            <div id="order" style="visibility: hidden;">
+                <form action="{% url 'placed'%}">
+                    <input type="text" name="address" placeholder="address">
+                    <br><br>
+                    <input type="text" name="mobile" placeholder="number">
+                    <br>
+                    <p>Currently only COD service is available</p>
+                    <input type="submit",name="PlaceOrder">
+
+                </form>
+            </div>
+        </div>
+        
+
+    </div>
+    
+</body>
+
+<script type="text/javascript">
+    var Button = document.getElementById('checkout');
+    Button.onclick = function(){
+        document.getElementById('order').style.visibility='visible';
+    }
+
+</script>
+
+</html>
